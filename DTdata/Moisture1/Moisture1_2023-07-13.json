@@ -1,0 +1,50 @@
+{
+    "thingId": "s3i:5ed9a4ea-1b69-44c7-91af-5c4112d756fb",
+    "policyId": "s3i:5ed9a4ea-1b69-44c7-91af-5c4112d756fb",
+    "attributes": {
+        "class": "ml40::Thing",
+        "name": "gSFL soil sensor test",
+        "roles": [
+            {
+                "class": "ml40::SoilSensor",
+                "name": "SoilSensor"
+            }
+        ],
+        "features": [
+            {
+                "class": "ml40::Location",
+                "latitude": 51.454694,
+                "longitude": 8.1435
+            },
+            {
+                "class": "ml40::Moisture",
+                "humidity": 577,
+                "latestTime": "2023-07-13 11:52:16.250212"
+            },
+            {
+                "class": "fml40::ProvidesSoilData"
+            },
+            {
+                "class": "fml40::MoisturePredictionReport",
+                "name": "MoisturePredictionReport",
+                "subFeatures": [
+                    {
+                        "class": "ml40::Moisture",
+                        "name": "Day 1",
+                        "humidity": 556
+                    },
+                    {
+                        "class": "ml40::Moisture",
+                        "name": "Day 2",
+                        "humidity": 556
+                    },
+                    {
+                        "class": "ml40::Moisture",
+                        "name": "Day 3",
+                        "humidity": 556
+                    }
+                ]
+            }
+        ]
+    }
+}

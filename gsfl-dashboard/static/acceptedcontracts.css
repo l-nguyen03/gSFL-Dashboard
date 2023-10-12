@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin:0; padding:0;
+    outline: none; border:none;
+    text-decoration: none;
+    transition: .2s linear;
+}
+
+.container{
+    padding:15px 2%;
+    padding-bottom: 100px;
+}
+
+.container .headContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.container .headContainer .heading {
+    text-align: center;
+    padding-bottom: 15px;
+    color: #fff;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    font-size: 50px;
+    flex-grow: 1;
+}
+
+.container .upper-container{
+    flex-basis: 60%;
+    margin-top: 1%;
+    margin-bottom: 20px;
+    background-color: rgba(61, 60, 60, 0.85);
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.container .upper-container .txt-box{
+    flex-basis: 40%;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+    
+    
+
+}
+
+.container .upper-container .table{
+    flex-grow: 1;
+    margin: 2%;
+    font-size: 24px;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    height: 350px;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.container .upper-container .table::-webkit-scrollbar{
+    display: none;
+}
+
+.container .upper-container .table tr{
+    background-color: #2e212cab;
+} 
+
+.container .upper-container .table tr:nth-child(even){
+    background-color: #522f4d94;
+}
+
+.container .upper-container .table th{
+    color: #fff;
+}
+
+.container .upper-container .table td{
+    color: #ffffffc5;
+}
+
+.container .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap:15px; */
+}
+
+.container .box-container .box{
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    border-radius: 5px;
+    background: #fff;
+    text-align: center;
+    padding:30px 20px;
+    min-width: 350px;
+    max-width: 400px;
+    margin-right: 15px; 
+    margin-bottom: 15px;
+    height: auto;
+}
+
+.container .box-container .box img{
+    height: 80px;
+}
+
+.container .box-container .box h3{
+    color:#444;
+    font-size: 22px;
+    padding:10px 0;
+}
+
+.container .box-container .box p{
+    color:#777;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.container .box-container .box .btn_transfer{
+    margin-top: 10px;
+    display: inline-block;
+    background:#4d2648;
+    color:#fff;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 8px 25px;
+}
+
+.container .box-container .box .btn_transfer:hover{
+    text-decoration: underline;
+}
+
+.container .box-container .box:hover{
+    box-shadow: 0 10px 15px rgba(0,0,0,.3);
+    transform: scale(1.03);
+}
+
+.container .upper-container .table table {
+    width: 100%;
+    border-collapse: collapse; /* Ensure the borders of adjacent cells collapse into a single border */
+}
+
+.container .upper-container .table th, .container .upper-container .table td {
+    padding: 5px 10px; 
+    overflow: hidden; 
+}
+
+
+.container .upper-container .table th:nth-child(1), .container .upper-container .table td:nth-child(1) {
+    width: 60%;  
+}
+
+.container .upper-container .table th:nth-child(2), .container .upper-container .table td:nth-child(2) {
+    width: 40%;  
+}
+
+.container .upper-container .table th {
+    text-align: center;  
+}
+
+/* This pseudo-element will act as the delimiter */
+.container .upper-container .table::before {
+    content: "";
+    position: absolute;
+    left: 60%; 
+    top: 0;
+    bottom: 0; 
+    border-left: 2px solid #fff; 
+    z-index: 1;
+}
+
+@media (max-width:768px){
+    .container{
+        padding:20px;
+    }
+}
+
+/* Bold and left-aligned styles for specific <p> elements */
+.container .box-container .box p:nth-child(2),
+.container .box-container .box p:nth-child(3),
+.container .box-container .box p:nth-child(4) {
+    text-align: left;
+    margin-left: 15px; /* Optional: A bit of margin for better appearance */
+}
+
+.container .box-container .box p span {
+    font-weight: bold;
+}
+
+/* Center-aligned styles for <h3> element */
+.container .box-container .box h3 {
+    text-align: center;
+}
+
+/* Center-aligned styles for the transfer button */
+.container .box-container .box .btn_transfer {
+    display: block;
+    margin: 10px auto; /* Automatically centering the button in the box */
+}

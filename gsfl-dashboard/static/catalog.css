@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin:0; padding:0;
+    outline: none; border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+}
+
+.container{
+    padding:15px 2%;
+    padding-bottom: 100px;
+}
+
+.headContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.headContainer .heading {
+    text-align: center;
+    padding-bottom: 15px;
+    color: #fff;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    font-size: 50px;
+    flex-grow: 1;
+    margin-left: 300px;
+}
+
+.headContainer .btn_linkToAcceptedContracts {
+    margin-right: 10;
+    background: #a88511;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 8px 25px;
+    text-decoration: none;
+}
+
+.headContainer .btn_linkToAcceptedContracts:hover {
+    text-decoration: underline;
+}
+
+.container .box-container{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(270px, 1fr)); /* 将列数设置为3 */ /*repeat(auto-fit, minmax(270px, 1fr));*/
+    gap:15px;
+}
+
+.container .box-container .box{
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    border-radius: 5px;
+    background: #fff;
+    text-align: center;
+    width: 420px;
+    position: relative;
+}
+
+.container .box-container .box .box-title {
+  width: 100%;
+  background-color: #006d00; /* background color */
+  color: #fff; /* Title text color */
+  padding: 10px; /* Adjust padding as needed */
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.container .box-container .box .box-content {
+    display: flex;
+    align-items: flex-start; /* Align items vertically in the center */
+    justify-content: flex-start;
+    margin-bottom: 10px; /* Add some spacing between the logo and the content */
+    position: relative;
+
+}
+
+.container .box-container .box .box-logo {
+    width: 50px; /* Adjust the width as needed */
+    height: auto; /* To maintain aspect ratio and auto-adjust height */
+    margin-right: 0px; /* Add some spacing between the image and the title */
+    top: 0; /* Adjust the top value to move the logo up */
+    right: 10px; /* Adjust the top value to move the logo up */
+    z-index: 2; /* Bring the logo above the title */
+}
+
+.container .box-container .box img{
+    height: 80px;
+}
+
+.container .box-container .box h3{
+    color:#444;
+    font-size: 22px;
+    padding:20px 0;
+    margin: 0 15 px;
+}
+
+.container .box-container .box p{
+    color:#777;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-left: 15px;
+}
+
+.container .box-container .box .btn{
+    margin-top: 10px;
+    margin-bottom: 15px;
+    display: inline-block;
+    background:#4d2648;
+    color:#fff;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 8px 25px;
+    cursor: pointer
+}
+
+.container .box-container .box .btn:hover{
+    text-decoration: underline;
+}
+
+
+.container .box-container .box:hover{
+    box-shadow: 0 10px 15px rgba(0,0,0,.3);
+    transform: scale(1.03);
+}
+
+@media (max-width:768px){
+    .container{
+        padding:20px;
+    }
+}
+
+.container .box-container .box p{
+    text-transform: none;
+    text-align: left;
+    padding: 0 30px;
+}
+
+.container .box-container .box p span.key{
+    font-weight: bold;
+}

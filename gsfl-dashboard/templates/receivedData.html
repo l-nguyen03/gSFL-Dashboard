@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="headContainer">
+        <h1 class="heading">Received Data</h1>
+    </div>
+
+
+    <div class="contentContainer">
+        <div class="left-container">
+            <div class="text">
+                <h2>Your Received Data</h2>
+                <p>
+                    This part shows the transmitted data received from other participants
+                    in the Minimum Viable Dataspace.
+                </p>
+            </div>
+            <!-- <div class="box">
+                <h3></h3>
+                <div class="boxbox">
+                    <div class="assetbox">
+                        <div class="select-btn1" >
+                            <span class="btn-text1">Select DT(s)</span>
+                            <span class="arrow-dwn">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </span>
+                        </div>
+                        <ul class="list-assets">
+                            {% for DT in DTList %}
+                            <li class="asset" data-prop-id="{{ DT}}">
+                                <span class="checkbox">
+                                    <i class="fa-solid fa-check check-icon"></i>
+                                </span>
+                                <span class="asset-text">{{ DT }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <form action="/receivedData" method="POST">
+                    <input type="hidden" name="action" value="check">
+                    <input type="hidden" name="selectedDT" value="" required>
+                    <button type="submit" class="btn_create" disabled>check latest data</button>
+                </form>
+            </div> -->
+        </div>
+
+        <!--<script src="{{ url_for('static', filename='DTmanagement.js') }}"></script>-->
+
+        <div class="box-container">
+
+            {% for item in list %}
+                <div class="box">
+                    <h3>{{ item[1] }}</h3>
+                    <form method="POST" action="/receivedData">
+                        <input type="hidden" name="action" value="download{{ item }}">
+                        <button type="submit" class="btn_del">download</button>
+                    </form>
+                    <form method="POST" action="/receivedData">
+                        <input type="hidden" name="action" value="delete{{ item }}">
+                        <button type="submit" class="btn_del">delete</button>
+                    </form>
+
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    {% endblock %}
+</div>
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='receivedData.css') }}">
+{% endblock %}

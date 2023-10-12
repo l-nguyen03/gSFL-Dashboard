@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="headContainer">
+        <h1 class="heading">Contract Definitions</h1>
+            <a href="{{ url_for('catalog') }}" class="btn_linkToCatalog">
+                to Catalog <i class="fa-solid fa-arrow-right"></i>
+            </a>
+    </div>
+
+
+    <div class="contentContainer">
+        <div class="left-container">
+            <div class="text">
+                <h2>Your Contracts</h2>
+                <p>
+                    This part allows you to create Contracts
+                    that will be visible for everyone  in the Catalog.
+                    A Contract Definition can apply to one or more Assets 
+                    and needs a Policy to be operable.
+                    Satisfying this, a Contract Definition with an unique ID is created.
+                    On the right, all your Contract Definitions are listed.
+                    Those will then be accessable for everyone in the Catalog.  
+                </p>
+            </div>
+            <div class="box">
+                <h3>Create Contract Definition:</h3>
+                <div class="boxbox">
+                    <div class="assetbox">
+                        <div class="select-btn1" >
+                            <span class="btn-text1">Select Asset(s)</span>
+                            <span class="arrow-dwn">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </span>
+                        </div>
+                        <ul class="list-assets">
+                            {% for asset in assetList %}
+                            <li class="asset" data-prop-id="{{ asset.id}}">
+                                <span class="checkbox">
+                                    <i class="fa-solid fa-check check-icon"></i>
+                                </span>
+                                <span class="asset-text">{{ asset.id }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="policybox">
+                        <div class="select-btn2" >
+                            <span class="btn-text2">Select Access Policy</span>
+                            <span class="arrow-dwn">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </span>
+                        </div>
+                        <ul class="list-policies">
+                            {% for policy in policyList %}
+                            <li class="policy2">
+                                <span class="checkbox">
+                                    <i class="fa-solid fa-check check-icon"></i>
+                                </span>
+                                <span class="policy-text">{{ policy.id }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="policybox">
+                        <div class="select-btn3" >
+                            <span class="btn-text3">Select Contract Policy</span>
+                            <span class="arrow-dwn">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </span>
+                        </div>
+                        <ul class="list-policies">
+                            {% for policy in policyList %}
+                            <li class="policy3">
+                                <span class="checkbox">
+                                    <i class="fa-solid fa-check check-icon"></i>
+                                </span>
+                                <span class="policy-text">{{ policy.id }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="contractID-input">
+                        <label for="visibleContractID">Contract ID:</label>
+                        <input type="text" id="visibleContractID" placeholder="Enter Contract ID" required oninput="updateCreateButtonState()">
+                    </div>
+                    <div class="duration-input">
+                        <label for="durationInput">Duration:</label>
+                        <input type="text" id="durationInput" placeholder="Enter Duration in seconds" required oninput="updateCreateButtonState()">
+                    </div>
+                </div>
+                <form action="/contractdefinitions" method="POST">
+                    <input type="hidden" name="action" value="create">
+                    <input type="hidden" id="contractID" name="contractID" value="" required>
+                    <input type="hidden" id="duration" name="duration" value="31536000" required>
+                    <input type="hidden" name="selectedAssets" value="" required>
+                    <input type="hidden" name="selectedAccessPolicy" value="" required>
+                    <input type="hidden" name="selectedContractPolicy" value="" required>
+                    <button type="submit" class="btn_create" disabled>create</button>
+                </form>
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='contractdefinitions.js') }}"></script>
+
+        <div class="box-container">
+
+            {% for contractDefinition in contractDefinitions %}
+                <div class="box">
+                    <h3>{{ contractDefinition["id"] }}</h3>
+                    <p>{{ contractDefinition["criteria"][0]["operandRight"] }}</p>
+                    <form method="POST" action="/contractdefinitions">
+                        <input type="hidden" name="action" value="delete{{ contractDefinition.id }}">
+                        <button type="submit" class="btn_del">delete</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+    {% endblock %}
+</div>
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='contractdefinitions.css') }}">
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    
+
+  <div class="headContainer">
+    <h1 class="heading">Welcome to the Demonstrator</h1>
+  </div>
+  
+  <div class="centered-text">
+      <p>
+        This is the Demonstrator of gSFL. The Process of trading with Goods or Data can be simulated on the following pages. This Process works like this:
+      </p>
+      <ul>
+        <li>DT-management: Check the latest DT data</li>
+        <li>Assets: Upload your Asset</li>
+        <li>Policy: Define the trade-conditions</li>
+        <li>Contract Definition: Create a new Contract Definition for one or more Assets and set trade-conditions through the Policy</li>
+        <li>Catalog: Contract Definitions of all Participants can be negotiated</li>
+        <li>Closed Contracts: See all accepted Contracts and optionally transfer them to your Database</li>
+        <li>Received Data: View all data received from other participants</li>
+      </ul>
+      <a href="{{ url_for('assets') }}" class="btn_linkToAssets">Start creating an Asset <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+    
+      
+</div>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+{% endblock %}

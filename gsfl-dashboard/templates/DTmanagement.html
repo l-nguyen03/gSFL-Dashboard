@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="headContainer">
+        <h1 class="heading">Digital Twins Management</h1>
+    </div>
+
+
+    <div class="contentContainer">
+        <div class="left-container">
+            <div class="text">
+                <h2>Your Digital Twins</h2>
+                <p>
+                    This part allows you to manage the data on Digital Twins.
+                    Check for the latest data from Digital Twins.
+                    Upload available data to your Azure blob storage account
+                    and prepare for the startup of the minimum Viable Dataspace.
+                </p>
+            </div>
+            <div class="box">
+                <h3></h3>
+                <div class="boxbox">
+                    <div class="dt_box">
+                        <div class="select-btn1" >
+                            <span class="btn-text1">Select DT(s)</span>
+                            <span class="arrow-dwn">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </span>
+                        </div>
+                        <ul class="list-dts">
+                            {% for DT in DTList %}
+                            <li class="dt" data-prop-id="{{ DT.id }}">
+                                <span class="checkbox">
+                                    <i class="fa-solid fa-check check-icon"></i>
+                                </span>
+                                <span class="dt-text">{{ DT.name }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="selected-items"></div>
+                </div>
+
+                <form action="/DTmanagement" method="POST">
+                    <input type="hidden" name="action" value="check">
+                    <input type="hidden" name="selectedDTs" value="" required>
+                    <button type="submit" class="btn_create" disabled>check latest data</button>
+                </form>
+                <form action="/DTmanagement" method="POST">
+                    <input type="hidden" name="action" value="show">
+                    <input type="hidden" name="selectedDTs" value="" required>
+                    <button type="submit" class="btn_create" disabled>show available data</button>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="box-container">
+
+            {% for item in list %}
+                <div class="box" data-dt-name="{{ item[0] }}">
+                    <h3>{{ item[0] }}</h3>
+                    <form method="POST" action="/DTmanagement">
+                        <input type="hidden" name="action" value="azure{{ item}}">
+                        <button type="submit" class="btn_del">upload to azure</button>
+                    </form>
+                    <form method="POST" action="/DTmanagement">
+                        <input type="hidden" name="action" value="delete{{ item[0] }}">
+                        <button type="submit" class="btn_del">delete</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    <script src="{{ url_for('static', filename='DTmanagement.js') }}"></script>
+    {% endblock %}
+</div>
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='DTmanagement.css') }}">
+{% endblock %}

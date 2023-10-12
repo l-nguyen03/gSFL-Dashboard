@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    
+    <div class="headContainer">
+        <h1 class="heading">Catalog</h1>
+            <a href="{{ url_for('acceptedcontracts') }}" class="btn_linkToAcceptedContracts">
+                to Accepted Contracts <i class="fa-solid fa-arrow-right"></i>
+            </a>
+    </div>
+    
+    <div class="box-container">
+
+        <div class="box">
+            <div class="box-content">
+                <img class="box-logo" src="{{ url_for('static', filename='Forwarder.png') }}">
+                <h3 class="box-title">MMI Forwarder</h3>
+            </div>
+            <h3>{{ asset[0].asset_name }}</h3>
+            <!-- <p>{{ catalogContracts[0].id }}</p>-->
+            <form method="POST" action="/catalog">
+                <input type="hidden" name="action" value="negotiate{{ catalogContracts[0].id }}">
+                <button type="submit" class="btn">negotiate</button>
+            </form>
+        </div>
+
+        <div class="box">
+            <div class="box-content">
+                <img class="box-logo" src="{{ url_for('static', filename='Harvester.png') }}">
+                <h3 class="box-title">John Deere Harverster MMI</h3>
+            </div>
+            <h3>{{ asset[1].asset_name }}</h3>
+              <!--<p>{{ catalogContracts[1].id }}</p> -->
+            <form method="POST" action="/catalog">
+                <input type="hidden" name="action" value="negotiate{{ catalogContracts[1].id }}">
+                <button type="submit" class="btn">negotiate</button>
+            </form>
+        </div>
+
+        <div class="box">
+            <div class="box-content">
+                <img class="box-logo" src="{{ url_for('static', filename='Moritz.png') }}">
+                <h3 class="box-title">KWH4.0 Raupe Moritz</h3>
+            </div>
+            <h3>{{ asset[2].asset_name }}</h3>
+            <!--<p>{{ catalogContracts[2].id }}</p> -->
+            <form method="POST" action="/catalog">
+                <input type="hidden" name="action" value="negotiate{{ catalogContracts[2].id }}">
+                <button type="submit" class="btn">negotiate</button>
+            </form>
+        </div>
+
+
+        <div class="box">
+            <div class="box-content">
+                <img class="box-logo" src="{{ url_for('static', filename='Forwarder.png') }}">
+                <h3 class="box-title">RIF Forwarder</h3>
+            </div>
+            <h3>{{ asset[3].asset_name }}</h3>
+            <!-- <p>{{ catalogContracts[3].id }}</p> -->
+            <form method="POST" action="/catalog">
+                <input type="hidden" name="action" value="negotiate{{ catalogContracts[3].id }}">
+                <button type="submit" class="btn">negotiate</button>
+            </form>
+        </div>
+
+        <div class="box">
+            <div class="box-content">
+                <img class="box-logo" src="{{ url_for('static', filename='Waldarbeiter.png') }}">
+                <h3 class="box-title">Waldarbeiter Walter</h3>
+            </div>
+            <h3>{{ asset[4].asset_name }}</h3>
+             <!--<p>{{ catalogContracts[4].id }}</p> -->
+            <form method="POST" action="/catalog">
+                <input type="hidden" name="action" value="negotiate{{ catalogContracts[4].id }}">
+                <button type="submit" class="btn">negotiate</button>
+            </form>
+        </div>
+
+        <div class="box">
+            <div class="box-content">
+                <img class="box-logo" src="{{ url_for('static', filename='Waldarbeiter.png') }}">
+                <h3 class="box-title">Waldarbeiter Karl</h3>
+            </div>
+            <h3>{{ asset[5].asset_name }}</h3>
+             <!-- <p>{{ catalogContracts[5].id }}</p>-->
+            <form method="POST" action="/catalog">
+                <input type="hidden" name="action" value="negotiate{{ catalogContracts[5].id }}">
+                <button type="submit" class="btn">negotiate</button>
+            </form>
+        </div>
+
+    </div>
+    
+</div>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='catalog.css') }}">
+{% endblock %}

@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin:0; padding:0;
+    outline: none; border:none;
+    text-decoration: none;
+    transition: .2s linear;
+}
+
+.container{
+    padding:15px 2%;
+    padding-bottom: 100px;
+}
+
+.headContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.headContainer .heading {
+    text-align: center;
+    padding-bottom: 15px;
+    margin-left: 300px;
+    color: #fff;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    font-size: 50px;
+    flex-grow: 1;
+}
+
+.headContainer .btn_linkToContractdefinitions {
+    margin-right: 10;
+    background: #a88511;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 8px 25px;
+    text-decoration: none;
+}
+
+.headContainer .btn_linkToContractdefinitions:hover{
+    text-decoration: underline;
+}
+
+.contentContainer{
+    display: flex;
+}
+
+.contentContainer .left-container{
+    /*height: 69vh;*/
+    flex-basis: 60%;
+    /*margin-top: 0;*/
+    background-color: rgba(61, 60, 60, 0.85);
+    border-radius: 10px;
+    position: relative;
+    padding-top: 0;
+}
+
+.contentContainer .left-container .text{
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+}
+
+.contentContainer .left-container .box{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contentContainer .left-container .box h3{
+    color:#444;
+    font-size: 22px;
+    padding:10px 0;
+}
+
+.contentContainer .left-container .box p{
+    color:#777;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.contentContainer .left-container .box .txt_field{
+    display: flex;
+    position: relative;
+    margin-top: 20px;
+    width: 100%;    
+}
+
+.contentContainer .left-container .box .btn_create{
+    margin-top: 10px;
+    display: inline-flex;
+    background:#057025;
+    color:#fff;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 8px 25px;
+    cursor: pointer
+}
+
+.contentContainer .left-container .box .btn_create:hover{
+    text-decoration: underline;
+}
+
+.contentContainer .left-container .txt_field input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: auto;
+}
+
+.contentContainer .left-container .txt_field label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+
+
+
+.contentContainer .box-container{
+  /*height: 70vh;*/
+  overflow-y: auto;
+  flex-basis: 40%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 1% 2% 1% 2%;
+}
+
+.contentContainer .box-container::-webkit-scrollbar{
+    display: none;
+}
+
+.contentContainer .box-container .box{
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    border-radius: 5px;
+    background: #fff;
+    text-align: center;
+    padding:30px 5px;
+}
+
+.contentContainer .box-container .box h3{
+    color:#444;
+    font-size: 22px;
+    padding:10px 0;
+}
+
+.contentContainer .box-container .box p{
+    color:#777;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.contentContainer .box-container .box .btn_details{
+    margin-top: 10px;
+    display: inline-flex;
+    background:#333;
+    color:#fff;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 8px 25px;
+    text-decoration: none;
+}
+
+.contentContainer .box-container .box .btn_details:hover{
+    text-decoration: underline;
+}
+
+.contentContainer .box-container .box .btn_del{
+    margin-top: 10px;
+    display: inline-flex;
+    background:#a12424;
+    color:#fff;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 8px 25px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.contentContainer .box-container .box .btn_del:hover{
+    text-decoration: underline;
+}
+
+.contentContainer .box-container .box:hover{
+    box-shadow: 0 10px 15px rgba(0,0,0,.3);
+    transform: scale(1.03);
+}
+
+@media (max-width:768px){
+    .contentContainer{
+        padding:20px;
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+/* Styles to make the button larger */
+.btn_create {
+    font-size: 16px;  /* Increase font size */
+    padding: 12px 24px; /* Increase padding */
+    background-color: #007bff;  /* Button color */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 20px auto;
+}
+
+.btn_create:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Style for the form container */
+#formContainer {
+    border-radius: 10px;
+    flex: 1;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for the input fields */
+.txt_field input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px; /* Add some space below each input */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.inline_fields {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.inline_fields input {
+    flex: 1;
+    margin-right: 10px; /* adding some margin to the right for spacing */
+}
+
+.inline_fields input:last-child {
+    margin-right: 0; /* remove the margin from the last input field */
+}
+
+.rounded-input {
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#addConstraintsBtn {
+    margin-top: 20px;
+    border: 1px solid #000;
+    padding: 8px 15px;
+    display: block; 
+    cursor: pointer;
+    background: white;
+    border-radius: 5px;
+}
+
+.additionalInput {
+    margin-top: 10px;
+    border: 2px solid #000;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    display: none;
+}
+
+.additionalInput input[type="text"] {
+    width: 100%;
+}
+
+/* Details Button Styling */
+.contentContainer .box-container .box .btn_details{
+    margin-top: 10px;
+    display: inline-flex;
+    background:#555;
+    color:#fff;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 8px 25px;
+    text-decoration: none;
+}
+
+.contentContainer .box-container .box .btn_details:hover{
+    text-decoration: underline;
+    background: #333;
+}
+
+/* Flexible Box Growth */
+.contentContainer .box-container .box{
+    min-height: 150px;  
+    flex-grow: 1;
+}
+
+textarea {
+    width: 100%; 
+    height: auto; 
+    overflow: hidden; 
+    resize: none; 
+}
+
+/* Adjustments for policy boxes to be more flexible */
+.contentContainer .box-container{
+    gap: 25px;  /* Increase the gap between boxes */
+}
+
+.section-header {
+    color: #333; /* Dark color for clarity */
+    font-size: 18px; /* Slightly smaller than the main headings */
+    margin-top: 10px; /* Space above the header for separation */
+    margin-bottom: 5px; /* Space below the header for separation */
+}

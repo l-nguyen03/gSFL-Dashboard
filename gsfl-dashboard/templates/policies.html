@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="headContainer">
+        <h1 class="heading">Policies</h1>
+            <a href="{{ url_for('contractdefinitions') }}" class="btn_linkToContractdefinitions">
+                to contract Definitions <i class="fa-solid fa-arrow-right"></i>
+            </a>
+    </div>
+
+    <div class="contentContainer">
+
+        <div class="left-container">
+            <div class="text">
+                <h2>Your Policies</h2>
+                <p>This part allows you to create a new Policy with an unique ID. 
+                    It's purpose is to define the conditions under which an Asset can be traded.
+                    It's recommended to choose a descriptive Name for clarity purposes.
+                    On the right are all your Policies listed.   
+                </p>
+            </div>
+
+            <div class="button-container">
+                <button id="btnShowForm" class="btn_create">Create New Policy</button>
+            </div>
+
+            <div id="formContainer" style="display: none;">
+                <h3>Create new Policy:</h3>
+                <form action="/policies" method="POST">
+                    <div class="txt_field">
+                        <input type="text" name="policyNameInput" placeholder="Policy-Name" required>
+                    </div>
+                    <div class="inline_fields">
+                        <input type="text" name="assignerUrl" placeholder="Provider (URL)" class="rounded-input">
+                        <input type="text" name="assigneeUrl" placeholder="Consumer (URL)" class="rounded-input">
+                    </div>
+
+                    <button id="addConstraintsBtn" type="button">Add Constraints</button>
+
+                    <div class="additionalInput" id="partnersInput">
+                        <input type="text" name="partnersNames" placeholder="Only Name(s): Seperated by / e.g. company1/company2/...">
+                    </div>
+        
+                    <div class="additionalInput" id="cityInput">
+                        <input type="text" name="CityNames" placeholder="Only City(s): Seperated by / e.g. city1/city2/...">
+                    </div>
+
+                    <input type="hidden" name="action" value="create">
+                    <button type="submit" class="btn_create">create</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="box-container">
+
+            {% for policy in policies %}
+                <div class="box">
+                    <h3>{{ policy.id }}</h3>
+                    <button class="btn_details" onclick="showDetails('{{ policy.id }}')">details</button>
+                    <div class="details-content" id="details-{{ policy.id }}" style="display: none;">
+                        <h4 class="section-header">Permissions</h4>
+                        <textarea readonly>{{ policy.permissions | to_pretty_json }}</textarea>
+
+                        <h4 class="section-header">Prohibitions</h4>
+                        <textarea readonly>{{ policy.prohibitions | to_pretty_json }}</textarea>
+
+                        <h4 class="section-header">Obligations</h4>
+                        <textarea readonly>{{ policy.obligations | to_pretty_json }}</textarea>
+                    </div>
+                    <form method="POST" action="/policies">
+                        <!--<a href="#" class="btn_details">details</a>  -->
+                        <input type="hidden" name="action" value="delete{{ policy.id }}">
+                        <button type="submit" class="btn_del">delete</button>
+                    </form>
+                </div>
+            {% endfor %}
+
+        </div>
+        
+    </div>
+    {% endblock %}
+</div>
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='policies.css') }}">
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btnShowForm = document.getElementById("btnShowForm");
+        const formContainer = document.getElementById("formContainer");
+        const textDiv = document.querySelector(".left-container .text");
+        const constraintsBtn = document.getElementById("addConstraintsBtn");
+        const partnersInput = document.getElementById("partnersInput");
+        const locationsInput = document.getElementById("cityInput");
+
+        btnShowForm.addEventListener("click", function() {
+            formContainer.style.display = "block";  // Show the form
+            btnShowForm.remove();     // Remove the button
+            textDiv.remove();
+        });
+
+        constraintsBtn.addEventListener("click", function() {
+            partnersInput.style.display = "block";
+            locationsInput.style.display = "block";
+            constraintsBtn.remove();
+        });
+    });
+
+    function adjustHeight(textarea) {
+        textarea.style.height = "auto";
+        textarea.style.height = (textarea.scrollHeight) + "px";
+    }
+
+    function showDetails(policyId) {
+        const detailsDiv = document.getElementById(`details-${policyId}`);
+        const textareas = detailsDiv.querySelectorAll('textarea');
+
+        if (detailsDiv.style.display === "none") {
+            detailsDiv.style.display = "block";
+
+            textareas.forEach(adjustHeight);
+        } else {
+            detailsDiv.style.display = "none";
+        }
+    }
+</script>
+{% endblock %}
+

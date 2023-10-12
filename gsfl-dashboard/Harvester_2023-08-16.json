@@ -1,0 +1,134 @@
+{
+    "thingId": "s3i:ef39a0ae-1f4a-4393-9508-ad70a4d38a63",
+    "policyId": "s3i:ef39a0ae-1f4a-4393-9508-ad70a4d38a63",
+    "attributes": {
+        "class": "ml40::Thing",
+        "name": "gSFL Harvester",
+        "roles": [
+            {
+                "class": "fml40::Harvester",
+                "name": "Harvester"
+            }
+        ],
+        "features": [
+            {
+                "class": "ml40::Composite",
+                "targets": [
+                    {
+                        "class": "ml40::Thing",
+                        "name": "Motor",
+                        "roles": [
+                            {
+                                "class": "ml40::Engine",
+                                "name": "Engine"
+                            }
+                        ],
+                        "features": [
+                            {
+                                "class": "ml40::RotationalSpeed",
+                                "rpm": "ditto-feature:id1"
+                            }
+                        ]
+                    },
+                    {
+                        "class": "ml40::Thing",
+                        "name": "Kran",
+                        "roles": [
+                            {
+                                "class": "ml40::Crane",
+                                "name": "Crane"
+                            }
+                        ],
+                        "features": [
+                            {
+                                "class": "ml40::Shared",
+                                "targets": [
+                                    {
+                                        "class": "ml40::Thing",
+                                        "name": "Harvesterkopf",
+                                        "roles": [
+                                            {
+                                                "class": "fml40::HarvestingHead",
+                                                "name": "HarvestingHead"
+                                            }
+                                        ],
+                                        "features": [
+                                            {
+                                                "class": "fml40::Grabs"
+                                            },
+                                            {
+                                                "class": "fml40::Cuts"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "class": "ml40::Thing",
+                        "name": "Bordcomputer",
+                        "roles": [
+                            {
+                                "class": "ml40::MachineUI",
+                                "name": "MachineUI"
+                            }
+                        ],
+                        "features": []
+                    }
+                ]
+            },
+            {
+                "class": "fml40::ProvidesProductionData"
+            },
+            {
+                "class": "fml40::AcceptsFellingJobs"
+            },
+            {
+                "class": "fml40::Harvests"
+            },
+            {
+                "class": "ml40::ManagesJobs"
+            },
+            {
+                "class": "fml40::AcceptsProximityAlert"
+            },
+            {
+                "class": "ml40::Location",
+                "latitude": "ditto-feature:id3",
+                "longitude": "ditto-feature:id2"
+            },
+            {
+                "class": "ml40::Dimensions",
+                "height": 0,
+                "weight": 0,
+                "width": 0
+            },
+            {
+                "class": "ml40::Weight",
+                "weight": 0
+            },
+            {
+                "class": "ml40::OperatingHours",
+                "total": 12.3
+            }
+        ]
+    },
+    "features": {
+        "id3": {
+            "properties": {
+                "latitude": 51.45279378260752
+            }
+        },
+        "id2": {
+            "properties": {
+                "longitude": 7.995173566796094
+            }
+        },
+        "id1": {
+            "properties": {
+                "rpm": 2400
+            }
+        }
+    }
+}

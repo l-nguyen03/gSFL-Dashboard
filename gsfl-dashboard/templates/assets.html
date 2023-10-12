@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="headContainer">
+        <h1 class="heading">Assets</h1>
+            <a href="{{ url_for('policies') }}" class="btn_linkToPolicies">
+                to Policies <i class="fa-solid fa-arrow-right"></i>
+            </a>
+    </div>
+
+
+    <div class="contentContainer">
+        <div class="left-container">
+            <div class="text">
+                <h2>Your Assets </h2>
+                <p>
+                    This part allows you to create a new Asset with your prefered name. 
+                    It is recommended to choose a descriptive Name for clarity purposes.
+                    In the creation Process an unique ID is assigned to each new Asset.
+                    On the right, all your provided assets are listed.   
+                </p>
+            </div>
+            <div class="box">
+                <h3>Create new asset:</h3>
+                <div class="name-input">
+                    <label for="nameInput">Asset Name:</label>
+                    <input type="text" id="nameInput" placeholder="Enter Asset Name" required oninput="updateCreateButtonState()">
+                </div>
+
+                <div class="content-input">
+                    <label for="contentInput">Content Type:</label>
+                    <input type="text" id="contentInput" placeholder="Enter Content Type" required oninput="updateCreateButtonState()">
+                </div>
+
+
+                <form action="/assets" method="POST">
+                    <div class="assetbox">
+                        <div class="select-btn1" >
+                            <span class="btn-text1">Select Data (from Azure account)</span>
+                            <span class="arrow-dwn">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </span>
+                        </div>
+                        <ul class="list-assets">
+                            {% for data in dataList %}
+                            <li class="asset">
+                                <span class="checkbox">
+                                    <i class="fa-solid fa-check check-icon"></i>
+                                </span>
+                                <span class="asset-text">{{ data.name }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <input type="hidden" id="assetNameInput" name="assetNameInput" value="" required>
+                    <input type="hidden" id="assetContentInput" name="assetContentInput" value="" required>
+                    <input type="hidden" name="action" value="create">
+                    <input type="hidden" name="selectedAssets" value="" required>
+                    <button type="submit" class="btn_create" disabled>create</button>
+                </form>
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='assets.js') }}"></script>
+
+        <div class="box-container">
+
+            {% for asset in assets %}
+                <div class="box">
+                    <h3>{{ asset["properties"]["asset:prop:name"]  }}</h3>
+                    {% for key, value in asset["properties"].items() %}
+                        {% if key == "asset:prop:contenttype" %}
+                            {% set key = "Content Type" %}
+                            <p><span class="key">{{ key }}</span> : {{ value }}</p>
+                        {% endif %}
+                    {% endfor %}
+                    <form method="POST" action="/assets">
+                         <!-- <a href="#" class="btn_details">details</a> -->
+                        <input type="hidden" name="action" value="delete{{ asset.id }}">
+                        <button type="submit" class="btn_del">delete</button>
+                    </form>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>    
+</div>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='assets.css') }}">
+{% endblock %}

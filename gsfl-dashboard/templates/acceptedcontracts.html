@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    
+    <div class="headContainer">
+        <h1 class="heading">Accepted Contracts</h1>
+    </div>
+    
+    <div class="upper-container">
+        <div class="txt-box">
+            <h2>Accepted Contracts</h2>
+            <p>
+                Below you can see all the Contracts that have been closed and accepted.
+                They can be transfered to your local container to be saved.
+                The State of that Process as well as it's details can be checked
+                in the table on the right.
+                  
+            </p>
+        </div>
+        <div class="table">
+            <table>
+                <tr>
+                    <th>Assetname</th>
+                    <th>State</th>
+                </tr>
+
+                {% for transfer in transfer_lists %}
+                <tr>
+                    <td>{{ transfer["dataRequest"]["assetId"] }}</td>
+                    <td>{{ transfer["state"] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <div class="box-container">
+        
+        {% for accepted in ac_contracts %}
+                <div class="box">
+                    <h3>{{ accepted.id }}</h3>       <!-- accepted.id -->
+                    <p><span>Signing date:</span> {{ accepted.signdate }}</p>
+                    <p><span>Start date:</span> {{ accepted.startdate}}</p>
+                    <p><span>End date:</span> {{ accepted.enddate }}</p>
+                    <p><span>Asset ID:</span> {{  accepted.assetId  }}</p>
+                    <form method="POST" action="/acceptedcontracts">
+                        <input type="hidden" name="agreementID" value="{{ accepted.id }}">
+                        <input type="hidden" name="assetID" value="{{ accepted.assetId }}">
+                        <input type="hidden" name="signdate" value="{{ accepted.signdate }}">
+                        <input type="hidden" name="startdate" value="{{ accepted.startdate }}">
+                        <input type="hidden" name="enddata" value="{{ accepted.enddate }}">
+                        <button type="submit" class="btn_transfer">transfer</button>
+                    </form>
+                </div>
+        {% endfor %}
+        
+    </div>
+    
+</div>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='acceptedcontracts.css') }}">
+{% endblock %}
